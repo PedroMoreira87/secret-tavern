@@ -10,7 +10,10 @@ import {
     onAuthStateChanged,
     signOut
 } from "firebase/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
+toast.configure()
 class Authentication extends Component {
 
     constructor(props) {
@@ -18,7 +21,6 @@ class Authentication extends Component {
         this.state = {
             email: "",
             password: "",
-            message: "",
             nome: "",
             dataNascimento: "",
             cpf: ""
@@ -29,6 +31,15 @@ class Authentication extends Component {
         this.signIn = this.signIn.bind(this);
     }
 
+    onSignUp = () => toast("You Signed Up!", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+    });
     signUp() {
         const auth = getAuth();
         createUserWithEmailAndPassword(auth, this.state.email, this.state.password)
@@ -36,32 +47,33 @@ class Authentication extends Component {
                 // Signed in
                 const user = userCredential.user;
                 console.log(user);
-
+                this.onSignUp();
                 // Add a new document with a generated id.
                 const docRef = await addDoc(collection(db, "user"), {
-                    email: this.state.email,
-                    password: this.state.password
+                    email: this.state.email
                 });
                 console.log("Document written with ID: ", docRef.id);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                console.log(errorMessage);
             });
     }
 
+    onSignOut = () => toast("You Signed Out!");
     async signOut() {
         const auth = getAuth();
         await signOut(auth).then(() => {
             // Sign-out successful.
-            this.setState({message: "Signed Out"});
+            this.onSignOut();
         }).catch((error) => {
             // An error happened.
-            console.log(error)
+            console.log(error);
         });
     }
 
+    onSignIn = () => toast("You Signed In!");
     signIn() {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, this.state.email, this.state.password)
@@ -69,11 +81,12 @@ class Authentication extends Component {
                 // Signed in
                 const user = userCredential.user;
                 console.log(user);
+                this.onSignIn();
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                console.log(errorMessage)
+                console.log(errorMessage);
             });
     }
 
@@ -83,16 +96,16 @@ class Authentication extends Component {
             if (userCredential) {
                 const user = userCredential.user;
                 console.log(user);
-                this.setState({message: "Signed In"});
             }
         })
     }
 
     render() {
+
         return (
             <div>
                 <h1>Here is the LOGIN</h1>
-                <h1> Login Screen : {this.state.message} </h1>
+                <h1> Login Screen</h1>
                 {/*<Link to={"home"} className={"button-margin"}>*/}
                 {/*    */}
                 {/*</Link>*/}

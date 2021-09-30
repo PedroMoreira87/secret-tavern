@@ -6,13 +6,12 @@ import {getFirestore} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyDz-7zR9-cF8m7e3KfYlospOOqMaI-FRvA",
-    authDomain: "metodosquantitativoscomputacao.firebaseapp.com",
-    databaseURL: "https://metodosquantitativoscomputacao-default-rtdb.firebaseio.com",
-    projectId: "metodosquantitativoscomputacao",
-    storageBucket: "metodosquantitativoscomputacao.appspot.com",
-    messagingSenderId: "906065750614",
-    appId: "1:906065750614:web:671b27c689f4352c4be9f7"
+    apiKey: "AIzaSyDe3GLThGOn7qOXrBTAE95h7H0YkRKGSgM",
+    authDomain: "secret-tavern.firebaseapp.com",
+    projectId: "secret-tavern",
+    storageBucket: "secret-tavern.appspot.com",
+    messagingSenderId: "475113990468",
+    appId: "1:475113990468:web:40bf71fca06de651030f11"
 };
 
 // Initialize Firebase
