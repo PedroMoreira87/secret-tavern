@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Button} from "@material-ui/core";
+import {Button, TextField} from "@material-ui/core";
 import {Link} from "react-router-dom";
 import {
     getAuth,
@@ -9,6 +9,7 @@ import {
 } from "firebase/auth";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './index.css';
 
 toast.configure()
 
@@ -100,27 +101,64 @@ class Authentication extends Component {
     render() {
 
         return (
-            <div>
-                <h1>Here is the LOGIN</h1>
-                <h1> Login Screen</h1>
+            <div class="content">
+
+                {/* <Button variant="outlined" color="primary" onClick={this.signOut}>Sign Out</Button> */}
                 {/*<Link to={"home"} className={"button-margin"}>*/}
                 {/*    */}
                 {/*</Link>*/}
-                <Button variant="outlined" color="primary" onClick={this.signIn}>Sign In</Button>
+                
+                <div class="login-box">
+                    <h1 class="login-box-title"> Login Screen</h1>
 
-                <Link to={"sign-up"} className={"button-margin"}>
-                    <Button variant="outlined" color="primary">Sign Up</Button>
-                </Link>
+                    <div class="login-box-inputs">
+                        {/* <input type="text" placeholder="Email"
+                            onChange={(e) => this.setState({email: e.target.value})}/> <br/> */}
 
-                <br/>
-                <Button variant="outlined" color="primary" onClick={this.signOut}>Sign Out</Button>
+                        <TextField 
+                            type="text" 
+                            onChange={(e) => this.setState({email: e.target.value})} 
+                            id="outlined-basic" 
+                            label="Email" 
+                            variant="outlined" 
+                            className={"input1"}
+                        />
 
-                <br/>
-                <input type="text" placeholder="Email"
-                       onChange={(e) => this.setState({email: e.target.value})}/>
-                <br/>
-                <input type="password" placeholder="Password"
-                       onChange={(e) => this.setState({password: e.target.value})}/>
+                        <TextField 
+                            type="password" 
+                            onChange={(e) => this.setState({password: e.target.value})} 
+                            id="outlined-basic" 
+                            label="Password" 
+                            variant="outlined"
+                            className={"input1"}
+                        />
+
+                    </div>
+
+                    <div class="login-box-buttons">
+
+                        <Link to={"sign-up"}>
+                            <Button 
+                                variant="outlined" 
+                                color="primary"
+                                className={"btn-signup"}>
+                                Sign Up
+                            </Button>
+                        </Link>
+
+                        <Link to={"home"}>
+                            <Button 
+                                variant="outlined" 
+                                color="primary" 
+                                onClick={this.signIn}
+                                className={"btn-signin"}>
+                                Sign In
+                            </Button>
+                        </Link>
+
+                    </div>
+
+                </div>
             </div>
         )
     }

@@ -1,0 +1,32 @@
+
+
+.content {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    text-align: center;
+}
+
+.login-box-title {
+    margin-bottom: 25px;
+}
+
+.login-box-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn-signup {
+    position: absolute;
+    right: 0;
+}
+
+.input1 {
+    width: 100%;
+    height: 75px;
+}

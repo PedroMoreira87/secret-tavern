@@ -1,0 +1,23 @@
+
+
+.content {
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-box {
+    text-align: center;
+    width: 500px;
+}
+
+.register-box-title {
+    margin-bottom: 25px;
+}
+
+.register-box-buttons {
+    display: flex;
+    justify-content: space-evenly;
+}

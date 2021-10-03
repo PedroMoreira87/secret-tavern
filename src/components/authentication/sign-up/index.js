@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {Button} from "@material-ui/core";
+import {Button, TextField} from "@material-ui/core";
+
 import {Link} from "react-router-dom";
 import {db} from '../../../firebase'
 import {collection, addDoc} from "firebase/firestore";
@@ -10,6 +11,8 @@ import {
 } from "firebase/auth";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './index.css'
+
 
 toast.configure()
 
@@ -89,38 +92,97 @@ class SignUp extends Component {
     render() {
 
         return (
-            <div>
+            <div class="content">
 
-                <h1> Sign Up Screen</h1>
+                <div class="register-box">
 
-                <br/>
-                <input type="text" placeholder="First Name"
-                       onChange={(e) => this.setState({firstName: e.target.value})}/> <br/>
+                    <h1> Sign Up Screen</h1>
 
-                <input type="text" placeholder="Last Name"
-                       onChange={(e) => this.setState({lastName: e.target.value})}/> <br/>
+                    <div class="register-box-inputs">
+                        <TextField 
+                            type="text" 
+                            onChange={(e) => this.setState({firstName: e.target.value})}
+                            id="outlined-basic" 
+                            label="First Name" 
+                            variant="outlined" 
+                            className={"input1"}
+                        />
 
-                <input type="email" placeholder="Email"
-                       onChange={(e) => this.setState({email: e.target.value})}/> <br/>
+                        <TextField 
+                            type="text" 
+                            onChange={(e) => this.setState({lastName: e.target.value})}
+                            id="outlined-basic" 
+                            label="Last Name" 
+                            variant="outlined" 
+                            className={"input1"}
+                        />
 
-                <input type="password" placeholder="Password"
-                       onChange={(e) => this.setState({password: e.target.value})}/> <br/>
+                        <TextField 
+                            type="email" 
+                            onChange={(e) => this.setState({email: e.target.value})}
+                            id="outlined-basic" 
+                            label="Email" 
+                            variant="outlined" 
+                            className={"input1"}
+                        />
 
-                <input type="date" placeholder="Birthday"
-                       onChange={(e) => this.setState({birthday: e.target.value})}/> <br/>
+                        <TextField 
+                            type="password" 
+                            onChange={(e) => this.setState({password: e.target.value})}
+                            id="outlined-basic" 
+                            label="Password" 
+                            variant="outlined" 
+                            className={"input1"}
+                        />
+                        
+                        <TextField 
+                            type="date" 
+                            onChange={(e) => this.setState({birthday: e.target.value})}
+                            id="outlined-basic" 
+                            label="Birthday" 
+                            variant="outlined" 
+                            className={"input1"}
+                        />
 
-                <input type="text" placeholder="Gender"
-                       onChange={(e) => this.setState({gender: e.target.value})}/> <br/>
+                                        
+                        <TextField 
+                            type="text" 
+                            onChange={(e) => this.setState({gender: e.target.value})}
+                            id="outlined-basic" 
+                            label="Gender" 
+                            variant="outlined" 
+                            className={"input1"}
+                        />
 
-                {/*<Link to={"home"} className={"button-margin"}>*/}
-                {/*    */}
-                {/*</Link>*/}
-                <Button variant="outlined" color="primary" onClick={this.signUp}>Sign Up</Button>
+                    </div>
+    {/* 
+                    <input type="text" placeholder="First Name" onChange={(e) => this.setState({firstName: e.target.value})}/>
 
-                <Link to={"/"} className={"button-margin"}>
-                    <Button variant="outlined" color="primary">Back</Button>
-                </Link>
+                    <input type="text" placeholder="Last Name" onChange={(e) => this.setState({lastName: e.target.value})}/>
 
+                    <input type="email" placeholder="Email" onChange={(e) => this.setState({email: e.target.value})}/>
+
+                    <input type="password" placeholder="Password" onChange={(e) => this.setState({password: e.target.value})}/>
+
+                    <input type="date" placeholder="Birthday" onChange={(e) => this.setState({birthday: e.target.value})}/>
+
+                    <input type="text" placeholder="Gender" onChange={(e) => this.setState({gender: e.target.value})}/> */}
+
+                    {/*<Link to={"home"} className={"button-margin"}>*/}
+                    {/*    */}
+                    {/*</Link>*/}
+
+                    <div class="register-box-buttons">
+
+                        <Link to={"/"} className={"button-margin"}>
+                            <Button variant="outlined" color="primary">Back</Button>
+                        </Link>
+
+                        <Button variant="outlined" color="primary" onClick={this.signUp}>Sign Up</Button>
+
+                    </div>
+
+                </div>
             </div>
         )
     }
