@@ -137,12 +137,12 @@ class Authentication extends Component {
 
                     <div class="login-box-buttons">
 
-                        <Link to={"sign-up"}>
+                        <Link to={"register"}>
                             <Button 
                                 variant="outlined" 
                                 color="primary"
                                 className={"btn-signup"}>
-                                Sign Up
+                                Register
                             </Button>
                         </Link>
 
@@ -152,7 +152,7 @@ class Authentication extends Component {
                                 color="primary" 
                                 onClick={this.signIn}
                                 className={"btn-signin"}>
-                                Sign In
+                                Login
                             </Button>
                         </Link>
 

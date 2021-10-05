@@ -1,12 +1,15 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import NavBar from "../nav-bar";
 import {Button} from "@material-ui/core";
+import Header from "../../components/header"
+import NavBar from "../../components/nav-bar";
+
 import './index.css';
 
 function Home() {
     return (
         <div>
+            <Header/>
             <NavBar/>
 
             <h1>Home</h1>

@@ -61,7 +61,7 @@ class SignUp extends Component {
                 // Signed in
                 const user = userCredential.user;
                 // Add a new document with a generated id.
-                const docRef = await addDoc(collection(db, "user"), {
+                const docRef = await addDoc(collection(db, "users"), {
                     firstName: this.state.firstName,
                     lastName: this.state.lastName,
                     email: this.state.email,
@@ -155,30 +155,14 @@ class SignUp extends Component {
                         />
 
                     </div>
-    {/* 
-                    <input type="text" placeholder="First Name" onChange={(e) => this.setState({firstName: e.target.value})}/>
-
-                    <input type="text" placeholder="Last Name" onChange={(e) => this.setState({lastName: e.target.value})}/>
-
-                    <input type="email" placeholder="Email" onChange={(e) => this.setState({email: e.target.value})}/>
-
-                    <input type="password" placeholder="Password" onChange={(e) => this.setState({password: e.target.value})}/>
-
-                    <input type="date" placeholder="Birthday" onChange={(e) => this.setState({birthday: e.target.value})}/>
-
-                    <input type="text" placeholder="Gender" onChange={(e) => this.setState({gender: e.target.value})}/> */}
-
-                    {/*<Link to={"home"} className={"button-margin"}>*/}
-                    {/*    */}
-                    {/*</Link>*/}
 
                     <div class="register-box-buttons">
 
-                        <Link to={"/"} className={"button-margin"}>
+                        <Link to={"/login"} className={"button-margin"}>
                             <Button variant="outlined" color="primary">Back</Button>
                         </Link>
 
-                        <Button variant="outlined" color="primary" onClick={this.signUp}>Sign Up</Button>
+                        <Button variant="outlined" color="primary" onClick={this.signUp}>Register</Button>
 
                     </div>
 
