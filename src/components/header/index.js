@@ -9,7 +9,7 @@ export default function Header() {
             <span class="logo">LOGO</span>
             
             <Link to={""}>
-                <Button classname={"btn-logout"} variant="outlined" color="primary" >Log-out</Button>
+                <Button classname={"btn-logout"} variant="outlined" color="primary" >Log Out</Button>
             </Link>
 
         </header>

@@ -70,7 +70,6 @@ class Authentication extends Component {
         draggable: true,
         progress: undefined
     });
-
     signIn() {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, this.state.email, this.state.password)
@@ -137,12 +136,12 @@ class Authentication extends Component {
 
                     <div class="login-box-buttons">
 
-                        <Link to={"register"}>
+                        <Link to={"signup"}>
                             <Button 
                                 variant="outlined" 
                                 color="primary"
                                 className={"btn-signup"}>
-                                Register
+                                Sign Up
                             </Button>
                         </Link>
 

@@ -13,7 +13,6 @@ import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './index.css'
 
-
 toast.configure()
 
 class SignUp extends Component {
@@ -28,9 +27,9 @@ class SignUp extends Component {
             birthday: "",
             gender: "",
         }
-
         this.signUp = this.signUp.bind(this);
     }
+
 
     onError = () => toast.error("Error", {
         theme: "dark",
@@ -94,11 +93,11 @@ class SignUp extends Component {
         return (
             <div class="content">
 
-                <div class="register-box">
+                <div class="signup-box">
 
                     <h1> Sign Up Screen</h1>
 
-                    <div class="register-box-inputs">
+                    <div class="signup-box-inputs">
                         <TextField 
                             type="text" 
                             onChange={(e) => this.setState({firstName: e.target.value})}
@@ -156,13 +155,13 @@ class SignUp extends Component {
 
                     </div>
 
-                    <div class="register-box-buttons">
+                    <div class="signup-box-buttons">
 
                         <Link to={"/login"} className={"button-margin"}>
                             <Button variant="outlined" color="primary">Back</Button>
                         </Link>
 
-                        <Button variant="outlined" color="primary" onClick={this.signUp}>Register</Button>
+                        <Button variant="outlined" color="primary" onClick={this.signUp}>Sign Up</Button>
 
                     </div>
 

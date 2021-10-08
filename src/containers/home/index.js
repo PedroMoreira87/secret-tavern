@@ -6,7 +6,7 @@ import NavBar from "../../components/nav-bar";
 
 import './index.css';
 
-function Home() {
+export default function Home() {
     return (
         <div>
             <Header/>
@@ -23,5 +23,3 @@ function Home() {
         </div>
     )
 }
-
-export default Home;

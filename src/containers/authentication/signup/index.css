@@ -8,16 +8,16 @@
     align-items: center;
 }
 
-.register-box {
+.signup-box {
     text-align: center;
     width: 500px;
 }
 
-.register-box-title {
+.signup-box-title {
     margin-bottom: 25px;
 }
 
-.register-box-buttons {
+.signup-box-buttons {
     display: flex;
     justify-content: space-evenly;
 }
