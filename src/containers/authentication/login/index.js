@@ -7,7 +7,6 @@ import {
     onAuthStateChanged,
     signOut
 } from "firebase/auth";
-import 'react-toastify/dist/ReactToastify.css';
 import './index.css';
 import {onError, onLogOut, onLogin} from "../../../components/toastfy";
 

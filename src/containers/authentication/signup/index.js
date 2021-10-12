@@ -9,7 +9,6 @@ import {
     createUserWithEmailAndPassword,
     onAuthStateChanged
 } from "firebase/auth";
-import 'react-toastify/dist/ReactToastify.css';
 import './index.css'
 import {onSignUp, onError} from "../../../components/toastfy";
 
