@@ -59,7 +59,7 @@ function SignUp() {
     }
 
     return (
-        <div class="content">
+        <div class="signup-content">
             <div class="signup-box">
 
                 <h1> Sign Up Screen</h1>

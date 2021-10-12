@@ -1,0 +1,20 @@
+.post-footer {
+    width: 100%;
+    background-color: aquamarine;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.post-footer-interact {
+    width: 90%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post-footer-interact button {
+    height: 25px;
+    width: 100%;
+}

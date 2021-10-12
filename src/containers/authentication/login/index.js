@@ -57,7 +57,7 @@ function Login() {
     }
 
     return (
-        <div class="content">
+        <div class="login-content">
 
             <div class="login-box">
                 <h1 class="login-box-title"> Login Screen</h1>

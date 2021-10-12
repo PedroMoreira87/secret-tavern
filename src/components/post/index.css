@@ -1,0 +1,12 @@
+.post {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.post-body {
+    width: 700px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
