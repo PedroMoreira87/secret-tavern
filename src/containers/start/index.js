@@ -8,7 +8,7 @@ class Start extends Component {
     render() {
 
         return (
-            <div class="content">
+            <div class="start-content">
                 <Link to={"login"}>
                     <Button variant="outlined" color="primary">Login</Button>
                 </Link>

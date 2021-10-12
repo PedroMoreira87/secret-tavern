@@ -1,7 +1,9 @@
 import React from "react";
 import {Link} from 'react-router-dom'
 import {Button} from "@material-ui/core";
+import { FaBeer } from 'react-icons/fa';
 import './index.css'
+
 
 export default function Header() {
     return (
