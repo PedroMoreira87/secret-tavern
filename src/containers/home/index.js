@@ -13,13 +13,13 @@ export default function Home() {
             <NavBar/>
 
             <h1>Home</h1>
-                <Link to={"about"} className={"button-margin"}>
-                    <Button variant="outlined" color="primary" >About</Button>
-                </Link>
+            <Link to={"about"} className={"button-margin"}>
+                <Button variant="outlined" color="primary">About</Button>
+            </Link>
 
-                <Link to={"contact"}>
-                    <Button variant="outlined" color="secondary" >Contact</Button>
-                </Link>
+            <Link to={"contact"}>
+                <Button variant="outlined" color="secondary">Contact</Button>
+            </Link>
         </div>
     )
 }

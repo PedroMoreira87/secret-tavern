@@ -1,7 +1,7 @@
 import React from "react";
 import NavBar from "../../components/nav-bar";
 
-function NotFound () {
+function NotFound() {
     return (
         <div>
             <NavBar/>
