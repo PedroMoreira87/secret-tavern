@@ -100,7 +100,7 @@ class Authentication extends Component {
     render() {
 
         return (
-            <div class="content">
+            <div class="login-content">
 
                 {/* <Button variant="outlined" color="primary" onClick={this.signOut}>Sign Out</Button> */}
                 {/*<Link to={"home"} className={"button-margin"}>*/}

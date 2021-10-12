@@ -91,7 +91,7 @@ class SignUp extends Component {
     render() {
 
         return (
-            <div class="content">
+            <div class="signup-content">
 
                 <div class="signup-box">
 
