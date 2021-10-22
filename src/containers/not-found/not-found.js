@@ -1,7 +1,7 @@
 import React from "react";
-import NavBar from "../../components/nav-bar";
+import NavBar from "../../components/nav-bar/nav-bar";
 
-function NotFound() {
+export default function NotFound() {
     return (
         <div>
             <NavBar/>
@@ -9,5 +9,3 @@ function NotFound() {
         </div>
     )
 }
-
-export default NotFound;
