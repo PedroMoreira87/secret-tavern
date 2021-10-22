@@ -1,13 +1,13 @@
 import React from "react";
-import NavBar from "../../components/nav-bar";
+import NavBar from "../nav-bar/nav-bar";
+import Header from "../header/header";
 
-function Contact() {
+export default function Contact() {
     return (
         <div>
+            <Header/>
             <NavBar/>
             <h1>Here is the contact for the developer</h1>
         </div>
     )
 }
-
-export default Contact;

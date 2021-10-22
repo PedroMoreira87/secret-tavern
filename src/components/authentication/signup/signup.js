@@ -1,18 +1,13 @@
 import React, {useState} from "react";
 import {Button, TextField} from "@material-ui/core";
-
 import {Link, useHistory} from "react-router-dom";
 import {db} from '../../../firebase'
 import {collection, addDoc} from "firebase/firestore";
-import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    onAuthStateChanged
-} from "firebase/auth";
-import './index.css'
-import {onSignUp, onError} from "../../../components/toastfy";
+import './signup.css'
+import toastfy from "../../../utils/toastfy/toastfy";
+import auth from '../../../services/auth.service';
 
-function SignUp() {
+export default function Signup() {
 
     const history = useHistory();
     const [firstName, setFirstName] = useState('');
@@ -22,12 +17,9 @@ function SignUp() {
     const [birthday, setBirthday] = useState('');
     const [gender, setGender] = useState('');
 
-    function signUp() {
-        const auth = getAuth();
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(async (userCredential) => {
-                // Signed in
-                const user = userCredential.user;
+    function signup() {
+        auth.signup(email, password)
+            .then(async () => {
                 // Add a new document with a generated id.
                 const docRef = await addDoc(collection(db, "users"), {
                     firstName: firstName,
@@ -36,26 +28,15 @@ function SignUp() {
                     birthday: birthday,
                     gender: gender
                 });
-                onSignUp();
-                history.push("/home");
+                toastfy.onSignup();
+                history.push("/login");
                 console.log("Document written with ID: ", docRef.id);
             })
             .catch((error) => {
-                const errorCode = error.code;
                 const errorMessage = error.message;
-                onError();
+                toastfy.onError();
                 console.log(errorMessage);
             });
-    }
-
-    function componentDidMount() {
-        const auth = getAuth();
-        onAuthStateChanged(auth, (userCredential) => {
-            if (userCredential) {
-                const user = userCredential.user;
-                console.log(user);
-            }
-        })
     }
 
     return (
@@ -134,15 +115,12 @@ function SignUp() {
                 </div>
 
                 <div class="signup-box-buttons">
-                    <Link to={"/login"} className={"button-margin"}>
-                        <Button variant="outlined" color="primary">Back</Button>
-                    </Link>
-                    <Button variant="outlined" color="primary" onClick={signUp}>Sign Up</Button>
+                    <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
+
+                    <Button variant="outlined" color="primary" onClick={signup}>Sign Up</Button>
                 </div>
             </div>
         </div>
     )
 
 }
-
-export default SignUp;

@@ -1,67 +1,39 @@
 import React, {useState} from "react";
 import {Button, TextField} from "@material-ui/core";
 import {Link, useHistory} from "react-router-dom";
-import {
-    getAuth,
-    signInWithEmailAndPassword,
-    onAuthStateChanged,
-    signOut
-} from "firebase/auth";
-import './index.css';
-import {onError, onLogOut, onLogin} from "../../../components/toastfy";
+import './login.css';
+import toastfy from '../../../utils/toastfy/toastfy';
+import auth from '../../../services/auth.service';
 
-function Login() {
+export default function Login() {
 
     const history = useHistory();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    async function logOut() {
-        const auth = getAuth();
-        await signOut(auth).then(() => {
-            // Sign-out successful.
-            onLogOut();
-        }).catch((error) => {
-            // An error happened.
-            onError();
-            console.log(error);
-        });
-    }
-
     function login() {
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, email, password)
+        auth.login(email, password)
             .then((userCredential) => {
                 // Signed in
                 const user = userCredential.user;
-                onLogin();
+                toastfy.onLogin();
                 history.push("/home");
                 console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
-                onError();
+                toastfy.onError();
                 console.log(errorMessage);
             });
-    }
-
-    function componentDidMount() {
-        const auth = getAuth();
-        onAuthStateChanged(auth, (userCredential) => {
-            if (userCredential) {
-                const user = userCredential.user;
-                console.log(user);
-            }
-        })
     }
 
     return (
         <div class="login-content">
 
-            <div class="login-box">
-                <h1 class="login-box-title"> Login Screen</h1>
-                <div class="login-box-inputs">
+            <div className="login-box">
+                <h1 className="login-box-title"> Login Screen</h1>
+                <div className="login-box-inputs">
 
                     <TextField
                         type="text"
@@ -86,15 +58,15 @@ function Login() {
                     />
                 </div>
 
-                <div class="login-box-buttons">
-                    <Link to={"signup"}>
-                        <Button
-                            variant="outlined"
-                            color="primary"
-                            className={"btn-signup"}>
-                            Sign Up
-                        </Button>
-                    </Link>
+                <div className="login-box-buttons">
+
+                    <Button
+                        component={Link} to={'/signup'}
+                        variant="outlined"
+                        color="primary"
+                        className={"btn-signup"}>
+                        Sign Up
+                    </Button>
 
                     <Button
                         variant="outlined"
@@ -108,5 +80,3 @@ function Login() {
         </div>
     );
 }
-
-export default Login;

@@ -10,7 +10,7 @@ export default function Post() {
         <div class="post">
             <div class="post-body">
                 <PostHeader/>
-                <PostContent/>
+                <PostContent type="image"/>
                 <PostFooter/>
             </div>
         </div>

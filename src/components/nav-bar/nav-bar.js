@@ -1,5 +1,5 @@
 import React from "react";
-import './index.css'
+import './nav-bar.css'
 import {makeStyles, Paper, Tab, Tabs} from "@material-ui/core";
 
 const useStyles = makeStyles({
