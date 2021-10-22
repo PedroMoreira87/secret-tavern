@@ -2,8 +2,8 @@ import React, {useState} from "react";
 import {Button, TextField} from "@material-ui/core";
 import {Link, useHistory} from "react-router-dom";
 import './login.css';
-import toastfy from '../../../components/toastfy/toastfy';
-import auth from '../../../shared/auth.service';
+import toastfy from '../../../utils/toastfy/toastfy';
+import auth from '../../../services/auth.service';
 
 export default function Login() {
 

@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "../../components/nav-bar/nav-bar";
+import NavBar from "../nav-bar/nav-bar";
 
 export default function NotFound() {
     return (

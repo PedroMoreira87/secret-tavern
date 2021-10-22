@@ -4,8 +4,8 @@ import {Link, useHistory} from "react-router-dom";
 import {db} from '../../../firebase'
 import {collection, addDoc} from "firebase/firestore";
 import './signup.css'
-import toastfy from "../../../components/toastfy/toastfy";
-import auth from '../../../shared/auth.service';
+import toastfy from "../../../utils/toastfy/toastfy";
+import auth from '../../../services/auth.service';
 
 export default function Signup() {
 

@@ -1,10 +1,10 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
-import Home from "./containers/home/home";
-import Contact from "./containers/contact/contact";
-import About from "./containers/about/about";
-import NotFound from "./containers/not-found/not-found";
-import Login from "./containers/authentication/login/login";
-import SignUp from "./containers/authentication/signup/signup";
+import Home from "./components/home/home";
+import Contact from "./components/contact/contact";
+import About from "./components/about/about";
+import NotFound from "./components/not-found/not-found";
+import Login from "./components/authentication/login/login";
+import SignUp from "./components/authentication/signup/signup";
 import {ProtectedRoute} from "./protected.route";
 
 const Routes = () => {

@@ -1,8 +1,8 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {Button} from "@material-ui/core";
-import Header from "../../components/header/header"
-import NavBar from "../../components/nav-bar/nav-bar";
+import Header from "../header/header"
+import NavBar from "../nav-bar/nav-bar";
 
 import './home.css';
 

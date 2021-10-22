@@ -1,6 +1,6 @@
 import React from "react";
-import NavBar from "../../components/nav-bar/nav-bar";
-import Header from "../../components/header/header";
+import NavBar from "../nav-bar/nav-bar";
+import Header from "../header/header";
 
 export default function Contact() {
     return (

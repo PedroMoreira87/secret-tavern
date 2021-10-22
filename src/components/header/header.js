@@ -1,8 +1,8 @@
 import React, {useEffect} from "react";
 import {Button} from "@material-ui/core";
 import './header.css'
-import auth from "../../shared/auth.service";
-import toastfy from "../toastfy/toastfy";
+import auth from "../../services/auth.service";
+import toastfy from "../../utils/toastfy/toastfy";
 import {useHistory} from "react-router-dom";
 
 export default function Header() {
