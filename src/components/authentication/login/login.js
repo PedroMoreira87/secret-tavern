@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Button, TextField} from "@material-ui/core";
+import {Button, Card, CardContent, TextField} from "@material-ui/core";
 import {Link, useHistory} from "react-router-dom";
 import './login.css';
 import toastfy from '../../../utils/toastfy/toastfy';
@@ -30,53 +30,56 @@ export default function Login() {
 
     return (
         <div className="content">
+            <Card sx={{minWidth: 275}}>
+                <CardContent>
+                    <div className="login-box">
+                        <h1 className="login-box-title">Secret Tavern</h1>
+                        <div className="login-box-inputs">
 
-            <div className="login-box">
-                <h1 className="login-box-title"> Login Screen</h1>
-                <div className="login-box-inputs">
+                            <TextField
+                                type="text"
+                                onChange={(e) => {
+                                    setEmail(e.target.value)
+                                }}
+                                id="outlined-basic"
+                                label="Email"
+                                variant="outlined"
+                                className={"input1"}
+                            />
 
-                    <TextField
-                        type="text"
-                        onChange={(e) => {
-                            setEmail(e.target.value)
-                        }}
-                        id="outlined-basic"
-                        label="Email"
-                        variant="outlined"
-                        className={"input1"}
-                    />
+                            <TextField
+                                type="password"
+                                onChange={(e) => {
+                                    setPassword(e.target.value)
+                                }}
+                                id="outlined-basic"
+                                label="Password"
+                                variant="outlined"
+                                className={"input1"}
+                            />
+                        </div>
 
-                    <TextField
-                        type="password"
-                        onChange={(e) => {
-                            setPassword(e.target.value)
-                        }}
-                        id="outlined-basic"
-                        label="Password"
-                        variant="outlined"
-                        className={"input1"}
-                    />
-                </div>
+                        <div className="login-box-buttons">
 
-                <div className="login-box-buttons">
+                            <Button
+                                component={Link} to={'/signup'}
+                                variant="outlined"
+                                color="primary"
+                                className={"btn-signup"}>
+                                Sign Up
+                            </Button>
 
-                    <Button
-                        component={Link} to={'/signup'}
-                        variant="outlined"
-                        color="primary"
-                        className={"btn-signup"}>
-                        Sign Up
-                    </Button>
-
-                    <Button
-                        variant="outlined"
-                        color="primary"
-                        onClick={login}
-                        className={"btn-signin"}>
-                        Login
-                    </Button>
-                </div>
-            </div>
+                            <Button
+                                variant="outlined"
+                                color="primary"
+                                onClick={login}
+                                className={"btn-signin"}>
+                                Login
+                            </Button>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
         </div>
     );
 }

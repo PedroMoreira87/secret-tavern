@@ -14,9 +14,12 @@ const Routes = () => {
                 <Route exact path={"/"} component={Login}/>
                 <Route exact path={"/login"} component={Login}/>
                 <Route exact path={"/signup"} component={SignUp}/>
-                <ProtectedRoute exact path={"/contact"} component={Contact}/>
-                <ProtectedRoute exact path={"/about"} component={About}/>
-                <ProtectedRoute exact path={"/home"} component={Home}/>
+                {/*<ProtectedRoute exact path={"/contact"} component={Contact}/>*/}
+                {/*<ProtectedRoute exact path={"/about"} component={About}/>*/}
+                {/*<ProtectedRoute exact path={"/home"} component={Home}/>   */}
+                <Route exact path={"/contact"} component={Contact}/>
+                <Route exact path={"/about"} component={About}/>
+                <Route exact path={"/home"} component={Home}/>
                 <Route exact path={"/*"} component={NotFound}/>
             </Switch>
         </BrowserRouter>

@@ -1,11 +1,16 @@
 import React, {useState} from "react";
-import {Button, TextField} from "@material-ui/core";
+import {Button, Card, CardContent, TextField} from "@material-ui/core";
 import {Link, useHistory} from "react-router-dom";
 import {db} from '../../../firebase'
 import {collection, addDoc} from "firebase/firestore";
 import './signup.css'
 import toastfy from "../../../utils/toastfy/toastfy";
 import auth from '../../../services/auth.service';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+
+import DatePicker from '@mui/lab/DatePicker';
+
 
 export default function Signup() {
 
@@ -41,85 +46,92 @@ export default function Signup() {
 
     return (
         <div class="content">
-            <div class="signup-box">
+            <Card sx={{minWidth: 275}}>
+                <CardContent>
+                    <div class="signup-box">
 
-                <h1> Sign Up Screen</h1>
+                        <h1>Sign Up</h1>
 
-                <div class="signup-box-inputs">
-                    <TextField
-                        type="text"
-                        onChange={(e) => {
-                            setFirstName(e.target.value)
-                        }}
-                        id="outlined-basic"
-                        label="First Name"
-                        variant="outlined"
-                        className={"input1"}
-                    />
+                        <div class="signup-box-inputs">
+                            <TextField
+                                type="text"
+                                onChange={(e) => {
+                                    setFirstName(e.target.value)
+                                }}
+                                id="outlined-basic"
+                                label="First Name"
+                                variant="outlined"
+                                className={"input1"}
+                            />
 
-                    <TextField
-                        type="text"
-                        onChange={(e) => {
-                            setLastName(e.target.value)
-                        }}
-                        id="outlined-basic"
-                        label="Last Name"
-                        variant="outlined"
-                        className={"input1"}
-                    />
+                            <TextField
+                                type="text"
+                                onChange={(e) => {
+                                    setLastName(e.target.value)
+                                }}
+                                id="outlined-basic"
+                                label="Last Name"
+                                variant="outlined"
+                                className={"input1"}
+                            />
 
-                    <TextField
-                        type="email"
-                        onChange={(e) => {
-                            setEmail(e.target.value)
-                        }}
-                        id="outlined-basic"
-                        label="Email"
-                        variant="outlined"
-                        className={"input1"}
-                    />
+                            <TextField
+                                type="email"
+                                onChange={(e) => {
+                                    setEmail(e.target.value)
+                                }}
+                                id="outlined-basic"
+                                label="Email"
+                                variant="outlined"
+                                className={"input1"}
+                            />
 
-                    <TextField
-                        type="password"
-                        onChange={(e) => {
-                            setPassword(e.target.value)
-                        }}
-                        id="outlined-basic"
-                        label="Password"
-                        variant="outlined"
-                        className={"input1"}
-                    />
+                            <TextField
+                                type="password"
+                                onChange={(e) => {
+                                    setPassword(e.target.value)
+                                }}
+                                id="outlined-basic"
+                                label="Password"
+                                variant="outlined"
+                                className={"input1"}
+                            />
 
-                    <TextField
-                        type="date"
-                        onChange={(e) => {
-                            setBirthday(e.target.value)
-                        }}
-                        id="outlined-basic"
-                        label="Birthday"
-                        variant="outlined"
-                        className={"input1"}
-                    />
+                            <LocalizationProvider dateAdapter={AdapterDateFns}>
+                                <DatePicker
+                                    id="outlined-basic"
+                                    label="Birthday"
+                                    variant="outlined"
+                                    className={"input1"}
+                                    value={birthday}
+                                    onChange={(newValue) => {
+                                        setBirthday(newValue);
+                                    }}
+                                    renderInput={(params) => <TextField {...params} />}
+                                 />
+                            </LocalizationProvider>
 
-                    <TextField
-                        type="text"
-                        onChange={(e) => {
-                            setGender(e.target.value)
-                        }}
-                        id="outlined-basic"
-                        label="Gender"
-                        variant="outlined"
-                        className={"input1"}
-                    />
+                            <TextField
+                                type="text"
+                                onChange={(e) => {
+                                    setGender(e.target.value)
+                                }}
+                                id="outlined-basic"
+                                label="Gender"
+                                variant="outlined"
+                                className={"input1"}
+                            />
 
-                </div>
+                        </div>
 
-                <div class="signup-box-buttons">
-                    <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
+                        <div class="signup-box-buttons">
+                            <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
 
-                    <Button variant="outlined" color="primary" onClick={signup}>Sign Up</Button>
-                </div>
-            </div>
+                            <Button variant="outlined" color="primary" onClick={signup}>Sign Up</Button>
+                        </div>
+                    </div>
+                </CardContent>
+            </Card>
         </div>
     )
 
