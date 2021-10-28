@@ -20,17 +20,17 @@ export default function Home() {
 
             <Button variant="outlined" color="secondary" component={Link} to={'/contact'}>Contact</Button>
 
-            <Post 
+            <Post
                 text="test1"
                 type="image"
             />
 
-            <Post 
+            <Post
                 text="test2"
                 type="video"
             />
 
-            <Post 
+            <Post
                 text="test3"
                 type="live"
             />
