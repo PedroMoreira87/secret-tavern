@@ -11,7 +11,6 @@ import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
 import DatePicker from '@mui/lab/DatePicker';
 
-
 export default function Signup() {
 
     const history = useHistory();

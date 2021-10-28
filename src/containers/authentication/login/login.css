@@ -7,13 +7,16 @@ html, body {
     font-family: 'MedievalSharp', sans-serif;
 }
 
-
 .login-content {
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    background-image: url('../../../assets/tavern02.jpg');
+    background-size: 100% 90%;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 .login-box {
