@@ -3,48 +3,55 @@ import './index.css'
 
 export default function PostContent(props) {
 
-    if(props.type === "text")
-        return TextPost()
-
     if(props.type === "image")
-        return ImagePost()
+        return ImagePost(props)
 
     if(props.type === "video")
-        return VideoPost()
+        return VideoPost(props)
 
     if(props.type === "live")
-        return LivePost()
+        return LivePost(props)
     
 }
 
-function TextPost() {
+function ImagePost(props) {
     return (
         <div class="post-content">
-            ISSO É UM TEXTO
+            <div class="post-content-text">
+                <span>{props.text}</span>
+            </div>
+            
+            <div class="post-content-attach">
+                <span>{props.type}</span>
+            </div>
         </div>
     )
 }
 
-function ImagePost() {
+function VideoPost(props) {
     return (
         <div class="post-content">
-            ISSO É UMA IMAGEM
+            <div class="post-content-text">
+                <span>{props.text}</span>
+            </div>
+
+            <div class="post-content-attach">
+                <span>{props.type}</span>
+            </div>
         </div>
     )
 }
 
-function VideoPost() {
+function LivePost(props) {
     return (
         <div class="post-content">
-            ISSO É UM VIDEO
-        </div>
-    )
-}
+            <div class="post-content-text">
+                <span>{props.text}</span>
+            </div>
 
-function LivePost() {
-    return (
-        <div class="post-content">
-            ISSO É UMA LIVE
+            <div class="post-content-attach">
+                <span>{props.type}</span>
+            </div>
         </div>
     )
 }

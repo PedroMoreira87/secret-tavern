@@ -1,6 +1,6 @@
 .post-header {
     width: 100%;
-    background-color: tomato;
+    border: 1px dotted black;
     border-radius: 5px 5px 0 0;
 }
 
@@ -14,7 +14,10 @@
 .post-header-user-photo {
     width: 40px;
     height: 40px;
-    background-color: aquamarine;
+    border: 1px dotted black;
     border-radius: 100%;
     margin: 0 10px 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

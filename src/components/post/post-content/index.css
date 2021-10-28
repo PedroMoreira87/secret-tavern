@@ -1,5 +1,20 @@
 .post-content {
     width: 100%;
     height: 300px;
-    background-color: lightcoral;
+    border: 1px dotted black;
+}
+
+.post-content-text {
+    width: 100%;
+    border: 1px dotted black;
+}
+
+.post-content-text span {
+    margin: 0 10px 0 10px;
+}
+
+.post-content-attach {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

@@ -5,12 +5,15 @@ import PostFooter from "../post/post-footer";
 import './index.css';
 
 
-export default function Post() {
+export default function Post(props) {
     return (
         <div class="post">
             <div class="post-body">
                 <PostHeader/>
-                <PostContent type="image"/>
+                <PostContent 
+                    text={props.text} 
+                    type={props.type}
+                />
                 <PostFooter/>
             </div>
         </div>
