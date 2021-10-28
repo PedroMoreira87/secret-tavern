@@ -25,7 +25,7 @@ export default function Header() {
 
     useEffect(() => {
         auth.isAuthenticated();
-    });
+    },[]);
 
     return (
         <header>
