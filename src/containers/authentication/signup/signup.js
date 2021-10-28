@@ -45,92 +45,85 @@ export default function Signup() {
 
     return (
         <div class="signup-content">
-            <Card sx={{minWidth: 275}}>
-                <CardContent>
-                    <div class="signup-box">
+            <div class="signup-box">
 
-                        <h1>Sign Up</h1>
+                <h1>Sign Up</h1>
 
-                        <div class="signup-box-inputs">
-                            <TextField
-                                type="text"
-                                onChange={(e) => {
-                                    setFirstName(e.target.value)
-                                }}
-                                id="outlined-basic"
-                                label="First Name"
-                                variant="outlined"
-                                className={"input1"}
-                            />
+                <div class="signup-box-inputs">
+                    <TextField
+                        type="text"
+                        onChange={(e) => {
+                            setFirstName(e.target.value)
+                        }}
+                        id="outlined-basic"
+                        label="First Name"
+                        variant="outlined"
+                        className={"input1"}
+                    />
 
-                            <TextField
-                                type="text"
-                                onChange={(e) => {
-                                    setLastName(e.target.value)
-                                }}
-                                id="outlined-basic"
-                                label="Last Name"
-                                variant="outlined"
-                                className={"input1"}
-                            />
+                    <TextField
+                        type="text"
+                        onChange={(e) => {
+                            setLastName(e.target.value)
+                        }}
+                        id="outlined-basic"
+                        label="Last Name"
+                        variant="outlined"
+                        className={"input1"}
+                    />
 
-                            <TextField
-                                type="email"
-                                onChange={(e) => {
-                                    setEmail(e.target.value)
-                                }}
-                                id="outlined-basic"
-                                label="Email"
-                                variant="outlined"
-                                className={"input1"}
-                            />
+                    <TextField
+                        type="email"
+                        onChange={(e) => {
+                            setEmail(e.target.value)
+                        }}
+                        id="outlined-basic"
+                        label="Email"
+                        variant="outlined"
+                        className={"input1"}
+                    />
 
-                            <TextField
-                                type="password"
-                                onChange={(e) => {
-                                    setPassword(e.target.value)
-                                }}
-                                id="outlined-basic"
-                                label="Password"
-                                variant="outlined"
-                                className={"input1"}
-                            />
+                    <TextField
+                        type="password"
+                        onChange={(e) => {
+                            setPassword(e.target.value)
+                        }}
+                        id="outlined-basic"
+                        label="Password"
+                        variant="outlined"
+                        className={"input1"}
+                    />
 
-                            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                                <DatePicker
-                                    id="outlined-basic"
-                                    label="Birthday"
-                                    variant="outlined"
-                                    className={"input1"}
+                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                        <DatePicker
+                            label="Birthday"
                                     value={birthday}
-                                    onChange={(newValue) => {
-                                        setBirthday(newValue);
-                                    }}
-                                    renderInput={(params) => <TextField {...params} />}
-                                 />
-                            </LocalizationProvider>
-
-                            <TextField
-                                type="text"
-                                onChange={(e) => {
-                                    setGender(e.target.value)
-                                }}
-                                id="outlined-basic"
-                                label="Gender"
-                                variant="outlined"
-                                className={"input1"}
+                            onChange={(newValue) => {
+                                setBirthday(newValue);
+                            }}
+                            renderInput={(params) => <TextField id="outlined-basic" variant="outlined" className={"input1"} {...params } />}
                             />
+                    </LocalizationProvider>
 
-                        </div>
+                    <TextField
+                        type="text"
+                        onChange={(e) => {
+                            setGender(e.target.value)
+                        }}
+                        id="outlined-basic"
+                        label="Gender"
+                        variant="outlined"
+                        className={"input1"}
+                    />
 
-                        <div class="signup-box-buttons">
-                            <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
+                </div>
 
-                            <Button variant="outlined" color="primary" onClick={signup}>Sign Up</Button>
-                        </div>
-                    </div>
-                </CardContent>
-            </Card>
+                <div class="signup-box-buttons">
+                    <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
+
+                    <Button variant="outlined" color="primary" onClick={signup}>Sign Up</Button>
+                </div>
+            </div>
         </div>
     )
 

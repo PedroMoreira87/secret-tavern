@@ -8,9 +8,13 @@
     background-size: 100% 90%;
     background-repeat: no-repeat;
     background-position: center center;
+    background-color: black;
 }
 
 .signup-box {
+    background-color: white;
+    padding: 26px;
+    border-radius: 6px;
     text-align: center;
     width: 500px;
 }

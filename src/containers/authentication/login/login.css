@@ -8,6 +8,7 @@ html, body {
 }
 
 .login-content {
+    background-color: black;
     height: 100vh;
     display: flex;
     flex-wrap: wrap;
@@ -21,6 +22,9 @@ html, body {
 
 .login-box {
     text-align: center;
+    background-color: white;
+    padding: 26px;
+    border-radius: 6px;
 }
 
 .login-box-title {
