@@ -1,7 +1,5 @@
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 import Home from "./containers/home/home";
-import Contact from "./components/contact/contact";
-import About from "./components/about/about";
 import NotFound from "./components/not-found/not-found";
 import Login from "./containers/authentication/login/login";
 import SignUp from "./containers/authentication/signup/signup";
@@ -17,8 +15,6 @@ const Routes = () => {
                 {/*<ProtectedRoute exact path={"/contact"} component={Contact}/>*/}
                 {/*<ProtectedRoute exact path={"/about"} component={About}/>*/}
                 {/*<ProtectedRoute exact path={"/home"} component={Home}/>   */}
-                <Route exact path={"/contact"} component={Contact}/>
-                <Route exact path={"/about"} component={About}/>
                 <Route exact path={"/home"} component={Home}/>
                 <Route exact path={"/*"} component={NotFound}/>
             </Switch>

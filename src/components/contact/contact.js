@@ -5,8 +5,6 @@ import Header from "../header/header";
 export default function Contact() {
     return (
         <div>
-            <Header/>
-            <NavBar/>
             <h1>Here is the contact for the developer</h1>
         </div>
     )
