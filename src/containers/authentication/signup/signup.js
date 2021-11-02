@@ -9,6 +9,13 @@ import auth from '../../../services/auth.service';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
+import avatar from '../../../assets/avatar.svg'
+import {getStorage, ref, uploadBytes} from "firebase/storage";
+import styled from "@emotion/styled";
+
+const Input = styled('input')({
+    display: 'none',
+});
 
 export default function Signup() {
 
@@ -19,6 +26,13 @@ export default function Signup() {
     const [password, setPassword] = useState('');
     const [birthday, setBirthday] = useState('');
     const [gender, setGender] = useState('');
+    const [imageURL, setImageURL] = useState(avatar);
+
+    const onImageChange = (event) => {
+        if (event.target.files && event.target.files[0]) {
+            setImageURL(URL.createObjectURL(event.target.files[0]));
+        }
+    }
 
     const isFieldEmpty = (field) => {
         return field === "";
@@ -34,28 +48,40 @@ export default function Signup() {
         return (!isFieldEmpty(firstName) && !isFieldEmpty(lastName) && !isFieldEmpty(email) && !isFieldEmpty(password) && !isFieldEmpty(birthday) && !isFieldEmpty(gender))
     }
 
-    function signup() {
-        if(checkForEmptyFields()) {
-            console.log("LOGADO!")    
-            auth.signup(email, password)
-            .then(async () => {
-                // Add a new document with a generated id.
-                const docRef = await addDoc(collection(db, "users"), {
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    birthday: birthday,
-                    gender: gender
+    async function signup() {
+        if (checkForEmptyFields()) {
+            const uploadedFile = imageURL;
+
+            await auth.signup(email, password)
+                .then(async (user) => {
+                    let uid = user.user.uid;
+                    // Add a new document with a generated id.
+                    const docRef = await addDoc(collection(db, "users"), {
+                        firstName: firstName,
+                        lastName: lastName,
+                        email: email,
+                        birthday: birthday,
+                        gender: gender
+                    });
+
+                    // Setting avatar
+                    // Create a root reference
+                    const storage = getStorage();
+                    // Create a reference to 'mountains.jpg'
+                    const storageRef = ref(storage, `users/${uid}`);
+                    uploadBytes(storageRef, uploadedFile).then((snapshot) => {
+                        console.log('Uploaded a blob or file!');
+                    });
+
+                    toastfy.onSignup();
+                    history.push("/login");
+                    console.log("Document written with ID: ", docRef.id);
+                })
+                .catch((error) => {
+                    const errorMessage = error.message;
+                    toastfy.onError();
+                    console.log(errorMessage);
                 });
-                toastfy.onSignup();
-                history.push("/login");
-                console.log("Document written with ID: ", docRef.id);
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                toastfy.onError();
-                console.log(errorMessage);
-            });
         } else {
             console.log("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS!")
         }
@@ -146,15 +172,23 @@ export default function Signup() {
                         error={error(gender)}
                     />
 
-                </div>
+                        <div className={'avatar-box'}>
+                            <img className={'avatar-size'} src={imageURL} alt=''/>
+                        </div>
 
-                <div class="signup-box-buttons">
-                    <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
+                        <label htmlFor="contained-button-file">
+                            <Input accept="image/*" id="contained-button-file" multiple type="file"
+                                   onChange={onImageChange}/>
+                            <Button variant="outlined" color="primary" component="span"> Upload </Button>
+                        </label>
+                    </div>
+
+                    <div class="signup-box-buttons">
+                        <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
 
                     <Button variant="outlined" color="primary" onClick={signup}>Sign Up</Button>
                 </div>
             </div>
         </div>
     )
-
 }

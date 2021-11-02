@@ -20,11 +20,23 @@
     width: 500px;
 }
 
-.signup-box-title {
-    margin-bottom: 25px;
-}
-
 .signup-box-buttons {
     display: flex;
     justify-content: space-evenly;
+}
+
+.avatar-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 12rem;
+    height: 9.2rem;
+    padding: 1.8rem 1.375rem;
+    border: 0.13rem solid #CCCCCC;
+    border-radius: 0.5rem;
+}
+
+.avatar-size {
+    height: 145%;
+    width: 115%;
 }
