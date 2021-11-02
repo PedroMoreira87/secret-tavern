@@ -8,7 +8,6 @@ import toastfy from "../../../utils/toastfy/toastfy";
 import auth from '../../../services/auth.service';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-
 import DatePicker from '@mui/lab/DatePicker';
 
 export default function Signup() {
@@ -21,8 +20,24 @@ export default function Signup() {
     const [birthday, setBirthday] = useState('');
     const [gender, setGender] = useState('');
 
+    const isFieldEmpty = (field) => {
+        return field === "";
+    }
+
+    var wasSignUpTried = false;
+
+    const error = (field) => {
+        return field === "";
+    }
+
+    function checkForEmptyFields() {
+        return (!isFieldEmpty(firstName) && !isFieldEmpty(lastName) && !isFieldEmpty(email) && !isFieldEmpty(password) && !isFieldEmpty(birthday) && !isFieldEmpty(gender))
+    }
+
     function signup() {
-        auth.signup(email, password)
+        if(checkForEmptyFields()) {
+            console.log("LOGADO!")    
+            auth.signup(email, password)
             .then(async () => {
                 // Add a new document with a generated id.
                 const docRef = await addDoc(collection(db, "users"), {
@@ -41,6 +56,9 @@ export default function Signup() {
                 toastfy.onError();
                 console.log(errorMessage);
             });
+        } else {
+            console.log("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS!")
+        }
     }
 
     return (
@@ -50,6 +68,7 @@ export default function Signup() {
                 <h1>Sign Up</h1>
 
                 <div class="signup-box-inputs">
+
                     <TextField
                         type="text"
                         onChange={(e) => {
@@ -59,6 +78,8 @@ export default function Signup() {
                         label="First Name"
                         variant="outlined"
                         className={"input1"}
+                        required
+                        error={error(firstName)}
                     />
 
                     <TextField
@@ -70,6 +91,8 @@ export default function Signup() {
                         label="Last Name"
                         variant="outlined"
                         className={"input1"}
+                        required
+                        error={error(lastName)}
                     />
 
                     <TextField
@@ -81,6 +104,8 @@ export default function Signup() {
                         label="Email"
                         variant="outlined"
                         className={"input1"}
+                        required
+                        error={error(email)}
                     />
 
                     <TextField
@@ -92,18 +117,21 @@ export default function Signup() {
                         label="Password"
                         variant="outlined"
                         className={"input1"}
+                        required
+                        error={error(password)}
                     />
 
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker
                             label="Birthday"
-                                    value={birthday}
+                            value={birthday}
                             onChange={(newValue) => {
                                 setBirthday(newValue);
                             }}
-                            renderInput={(params) => <TextField id="outlined-basic" variant="outlined" className={"input1"} {...params } />}
-                            />
+                            renderInput={(params) => <TextField required id="outlined-basic" variant="outlined" className={"input1"} {...params } />}
+                        />
                     </LocalizationProvider>
+
 
                     <TextField
                         type="text"
@@ -114,6 +142,8 @@ export default function Signup() {
                         label="Gender"
                         variant="outlined"
                         className={"input1"}
+                        required
+                        error={error(gender)}
                     />
 
                 </div>

@@ -21,8 +21,9 @@ html, body {
 }
 
 .login-box {
-    text-align: center;
+    /* background-color: rgba(20, 20, 20, 0.950); */
     background-color: white;
+    text-align: center;
     padding: 26px;
     border-radius: 6px;
 }
