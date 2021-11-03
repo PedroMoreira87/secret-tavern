@@ -26,6 +26,7 @@ yarn-error.log*
 out
 .git
 .idea
+.vscode
 *.iml
 venv
 node_modules
