@@ -9,7 +9,10 @@ export default function Post(props) {
     return (
         <div class="post">
             <div class="post-body">
-                <PostHeader/>
+                <PostHeader
+                    first_name={props.first_name}
+                    last_name={props.last_name}
+                />
                 <PostContent 
                     text={props.text} 
                     type={props.type}

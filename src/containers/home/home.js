@@ -8,7 +8,7 @@ import './home.css';
 
 export default function Home() {
     return (
-        <div>
+        <div class="home-content">
             <Header/>
             <NavBar/>
 

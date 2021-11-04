@@ -18,6 +18,7 @@ export default function NavBar() {
 
     return (
         <div>
+          <Paper>
             <BrowserRouter>
                 <Tabs value={value} onChange={handleChange} variant="fullWidth" centered >
                     <Tab label="FEED" {...a11yProps(0)} />                            
@@ -25,18 +26,20 @@ export default function NavBar() {
                     <Tab label="CONTACT" {...a11yProps(2)} />
                 </Tabs>
             </BrowserRouter>
+          </Paper>
 
-            <TabPanel value={value} index={0}>
-                <Feed/>
-            </TabPanel>
+          <TabPanel value={value} index={0} >
+              <Feed/>
+          </TabPanel>
 
-            <TabPanel value={value} index={1}>
-                <About/>
-            </TabPanel>
-            
-            <TabPanel value={value} index={2}>
-                <Contact/>
-            </TabPanel>
+          <TabPanel value={value} index={1} >
+              <About/>
+          </TabPanel>
+          
+          <TabPanel value={value} index={2} >
+              <Contact/>
+          </TabPanel>
+          
         </div>
     );
 
