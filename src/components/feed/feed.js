@@ -3,14 +3,21 @@ import {db} from '../../firebase'
 import Post from "../../components/post";
 import "./feed.css";
 import { collection, getDocs } from "firebase/firestore"
-
+import CreatePost from "../create-post/create-post"
+import {Button} from "@material-ui/core";
 
 export default function Feed() {
     const [posts, setPosts] = useState([])
+    const [isVisible, setVisible] = useState(false)
 
     useEffect(() => {
         fetchUsers();
     }, [])
+    
+    function postAppear(e) {
+        setVisible(true);
+        e.stopPropagation();
+    }
 
     const fetchUsers = async() => {
         const usersSnapshot = await getDocs(collection(db, "users"));
@@ -29,7 +36,12 @@ export default function Feed() {
     }
 
     return (
-        <div class="feed-content">
+
+        <div class="feed-content" onClick={ () => setVisible(false) }>
+
+            <Button variant="outlined" color="primary" onClick={ postAppear } >Create New Post</Button>
+
+            <CreatePost display={isVisible} />
             <Post
                 first_name="David"
                 last_name="Siqueira"
@@ -43,10 +55,12 @@ export default function Feed() {
             />
 
             <Post
+
                 text="test3"
                 type="live"
             />
 
         </div>
+       
     )
 }

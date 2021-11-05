@@ -1,0 +1,38 @@
+.create-post {
+    font-family: 'MedievalSharp', sans-serif;
+    position: fixed;
+    width: 800px;
+    height: 400px;
+    background-color: white;
+    border: 1px solid black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.create-post-content {
+    width: 80%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.create-post-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+h2 {
+    text-align: center;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: fixed;
+}

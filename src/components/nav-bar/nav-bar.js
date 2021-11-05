@@ -17,7 +17,7 @@ export default function NavBar() {
     };
 
     return (
-        <div>
+        <div class="nav-bar">
           <Paper>
             <BrowserRouter>
                 <Tabs value={value} onChange={handleChange} variant="fullWidth" centered >
