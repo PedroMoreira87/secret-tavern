@@ -17,6 +17,7 @@
 
 .post-footer-interact {
     width: 90%;
+    height: 100%;
     display: flex;
     justify-content: center;
 }
@@ -29,5 +30,6 @@
 }
 
 .post-footer-interact button:hover {
+    cursor: pointer;
     background-color: rgba(0, 0, 0, 0.100);
 }
