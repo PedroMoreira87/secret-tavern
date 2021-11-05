@@ -5,8 +5,8 @@ import 'react-toastify/dist/ReactToastify.css';
 toast.configure();
 
 class Toastfy {
-    onError() {
-        toast.error("Error", {
+    onError(msg) {
+        toast.error(msg, {
             theme: "dark",
             position: "top-right",
             autoClose: 5000,
@@ -18,8 +18,8 @@ class Toastfy {
         });
     }
 
-    onLogout() {
-        toast.error("You Logged Out!", {
+    onLogout(msg) {
+        toast.info(msg, {
             theme: "dark",
             position: "top-right",
             autoClose: 5000,
@@ -31,8 +31,8 @@ class Toastfy {
         });
     }
 
-    onLogin() {
-        toast.success("You Signed In!", {
+    onLogin(msg) {
+        toast.success(msg, {
             theme: "dark",
             position: "top-right",
             autoClose: 5000,
@@ -44,8 +44,8 @@ class Toastfy {
         });
     }
 
-    onSignup() {
-        toast.success("You Signed Up!", {
+    onSignup(msg) {
+        toast.success(msg, {
             theme: "dark",
             position: "top-right",
             autoClose: 5000,

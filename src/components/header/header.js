@@ -14,7 +14,7 @@ export default function Header() {
             .then(() => {
                 // Sign-out successful.
                 history.push("/login");
-                toastfy.onLogout();
+                toastfy.onLogout("You Logged Out!");
             })
             .catch((error) => {
                 // An error happened.

@@ -17,6 +17,8 @@ const Input = styled('input')({
     display: 'none',
 });
 
+let image;
+
 export default function Signup() {
 
     const history = useHistory();
@@ -31,16 +33,11 @@ export default function Signup() {
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
             setImageURL(URL.createObjectURL(event.target.files[0]));
+            image = event.target.files[0];
         }
     }
 
     const isFieldEmpty = (field) => {
-        return field === "";
-    }
-
-    var wasSignUpTried = false;
-
-    const error = (field) => {
         return field === "";
     }
 
@@ -50,7 +47,7 @@ export default function Signup() {
 
     async function signup() {
         if (checkForEmptyFields()) {
-            const uploadedFile = imageURL;
+            const uploadedFile = image;
 
             await auth.signup(email, password)
                 .then(async (user) => {
@@ -69,21 +66,21 @@ export default function Signup() {
                     const storage = getStorage();
                     // Create a reference to 'mountains.jpg'
                     const storageRef = ref(storage, `users/${uid}`);
-                    uploadBytes(storageRef, uploadedFile).then((snapshot) => {
+                    await uploadBytes(storageRef, uploadedFile).then((snapshot) => {
                         console.log('Uploaded a blob or file!');
                     });
 
-                    toastfy.onSignup();
+                    toastfy.onSignup("You Signed Up!");
                     history.push("/login");
                     console.log("Document written with ID: ", docRef.id);
                 })
                 .catch((error) => {
                     const errorMessage = error.message;
-                    toastfy.onError();
+                    toastfy.onError("Error");
                     console.log(errorMessage);
                 });
         } else {
-            console.log("TODOS OS CAMPOS PRECISAM SER PREENCHIDOS!")
+            toastfy.onError("All the fields are required");
         }
     }
 
@@ -105,7 +102,6 @@ export default function Signup() {
                         variant="outlined"
                         className={"input1"}
                         required
-                        error={error(firstName)}
                     />
 
                     <TextField
@@ -118,7 +114,6 @@ export default function Signup() {
                         variant="outlined"
                         className={"input1"}
                         required
-                        error={error(lastName)}
                     />
 
                     <TextField
@@ -131,7 +126,6 @@ export default function Signup() {
                         variant="outlined"
                         className={"input1"}
                         required
-                        error={error(email)}
                     />
 
                     <TextField
@@ -144,7 +138,6 @@ export default function Signup() {
                         variant="outlined"
                         className={"input1"}
                         required
-                        error={error(password)}
                     />
 
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -154,7 +147,8 @@ export default function Signup() {
                             onChange={(newValue) => {
                                 setBirthday(newValue);
                             }}
-                            renderInput={(params) => <TextField required id="outlined-basic" variant="outlined" className={"input1"} {...params } />}
+                            renderInput={(params) => <TextField required id="outlined-basic" variant="outlined"
+                                                                className={"input1"} {...params} error={false}/>}
                         />
                     </LocalizationProvider>
 
@@ -169,22 +163,23 @@ export default function Signup() {
                         variant="outlined"
                         className={"input1"}
                         required
-                        error={error(gender)}
                     />
 
-                        <div className={'avatar-box'}>
-                            <img className={'avatar-size'} src={imageURL} alt=''/>
-                        </div>
-
+                    <div className={'avatar-container'}>
                         <label htmlFor="contained-button-file">
                             <Input accept="image/*" id="contained-button-file" multiple type="file"
                                    onChange={onImageChange}/>
                             <Button variant="outlined" color="primary" component="span"> Upload </Button>
                         </label>
+                        <div className={'avatar-box'}>
+                            <img className={'avatar-size'} src={imageURL} alt=''/>
+                        </div>
                     </div>
 
-                    <div class="signup-box-buttons">
-                        <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
+                </div>
+
+                <div class="signup-box-buttons">
+                    <Button variant="outlined" color="primary" component={Link} to={'/login'}>Back</Button>
 
                     <Button variant="outlined" color="primary" onClick={signup}>Sign Up</Button>
                 </div>
