@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button, Card, CardContent, TextField} from "@material-ui/core";
 import {Link, useHistory} from "react-router-dom";
 import {db} from '../../../firebase'
-import {collection, addDoc} from "firebase/firestore";
+import {collection, addDoc, doc, setDoc} from "firebase/firestore";
 import './signup.css'
 import toastfy from "../../../utils/toastfy/toastfy";
 import auth from '../../../services/auth.service';
@@ -52,14 +52,17 @@ export default function Signup() {
             await auth.signup(email, password)
                 .then(async (user) => {
                     let uid = user.user.uid;
-                    // Add a new document with a generated id.
-                    const docRef = await addDoc(collection(db, "users"), {
+
+                    const docRef = doc(db, "users", uid);
+                    await setDoc(docRef, {
                         firstName: firstName,
                         lastName: lastName,
                         email: email,
                         birthday: birthday,
                         gender: gender
                     });
+
+                    console.log("UID:", uid)
 
                     // Setting avatar
                     // Create a root reference
