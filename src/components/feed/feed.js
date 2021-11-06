@@ -7,7 +7,7 @@ import CreatePost from "../create-post/create-post"
 import {Button} from "@material-ui/core";
 import { getAuth } from "firebase/auth";
 
-var lista = []
+var postsGambi = []
 
 export default function Feed() {
     const [loggedUserData, setLoggedUserData] = useState({})
@@ -16,50 +16,77 @@ export default function Feed() {
 
     useEffect(() => {
         getLoggedUserData();
-        fetchUsers();
+        doPosts();
     }, [])
-    
-    function postAppear(e) {
-        setVisible(true);
-        e.stopPropagation();
+
+    const doPosts = async() => {
+        await fetchPosts();
+        //setTimeout(()=>{console.log(posts.length)}, 5000)
+        mountPosts();
     }
 
-    const fetchUsers = async() => {
+    const fetchPosts = async() => {
         const usersSnapshot = await getDocs(collection(db, "users"));
-        let list = []
+        postsGambi = []
         usersSnapshot.forEach(async (userDoc) => {
             
             const postsSnapshot = await getDocs(collection(db, "users", userDoc.id, "posts"));
             postsSnapshot.forEach(async (postDoc) => {
-                console.log("USER: ", userDoc.data());  
-                console.log(" POST: ", postDoc.data());
-                list.unshift({ ... postDoc.data(), userData: userDoc.data() });
-                setPosts(list)
-                console.log(posts)
+                // console.log("USER: ", userDoc.data());  
+                // console.log(" POST: ", postDoc.data());
+                postsGambi.unshift({ ... postDoc.data(), userData: userDoc.data() });
+                //setPosts(list)
             })
 
         });
     }
 
+    const mountPosts = () => {
+        var postLength = postsGambi.length;
+        var handle = setInterval(() => {
+            postLength = postsGambi.length
+            console.log("Loading Posts...")
+
+            if(postLength != 0) {
+                setPosts(postsGambi)
+                console.log(posts)
+                clearInterval(handle)
+            }
+        }, 1000)
+    
+    }
+
+    const renderPosts = (postData, id) => {
+        return (
+            <Post
+                key={id}
+                first_name= {postData.userData.firstName}
+                last_name= {postData.userData.lastName}
+                text= {postData.text}
+                type="image"
+            />
+        )
+    }
 
     async function getLoggedUserData() {
         const auth = getAuth();
         const user = auth.currentUser;
+
         if (user !== null) {
             const docRef = doc(db, "users", user.uid);
             const docSnap = await getDoc(docRef);
             
             if (docSnap.exists()) {
                 setLoggedUserData(docSnap)
-                //console.log("The user's data was retrived successfully.");
+                console.log("The user's data was retrived successfully.");
                 return docSnap;
             } else {
-                //console.log("User's not found.");
+                console.log("User's not found.");
             }
 
             const uid = user.uid;
         } else {
-            //console.log("There's no user logged")
+            console.log("There's no user logged")
         }
     }
 
@@ -80,6 +107,11 @@ export default function Feed() {
         }
     }
 
+    function postAppear(e) {
+        setVisible(true);
+        e.stopPropagation();
+    }
+
     return (
 
         <div class="feed-content" onClick={ () => setVisible(false) }>
@@ -88,23 +120,10 @@ export default function Feed() {
 
             <CreatePost display={isVisible} user={ loggedUserData }/>
 
-            <Post
-                first_name="David"
-                last_name="Siqueira"
-                text="test1"
-                type="image"
-            />
+            <h1>{ posts.length }</h1>
 
-            <Post
-                text="test2"
-                type="video"
-            />
+            { posts.map(renderPosts) }
 
-            <Post
-
-                text="test3"
-                type="live"
-            />
 
         </div>
        

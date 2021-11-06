@@ -20,7 +20,7 @@ html, body {
 
 .login-box {
     /* background-color: rgba(20, 20, 20, 0.950); */
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.95);
     text-align: center;
     padding: 26px;
     border-radius: 6px;
