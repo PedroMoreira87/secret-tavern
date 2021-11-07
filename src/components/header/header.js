@@ -29,7 +29,7 @@ export default function Header() {
 
     return (
         <header>
-            <span className="logo">LOGO</span>
+            <span className="logo">Secret Tavern</span>
 
             <Button className={"btn-logout"} variant="outlined" color="primary" onClick={logout}>
                 Log Out
