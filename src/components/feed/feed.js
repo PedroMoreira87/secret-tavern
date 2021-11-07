@@ -53,17 +53,17 @@ export default function Feed() {
                 clearInterval(handle)
             }
         }, 1000)
-    
     }
 
     const renderPosts = (postData, id) => {
         return (
             <Post
                 key={id}
+                profile_pic = {postData.userData.image}
                 first_name= {postData.userData.firstName}
                 last_name= {postData.userData.lastName}
                 text= {postData.text}
-                image_link = {postData.userData.image}
+                attach = {postData.attach}
                 type="image"
             />
         )

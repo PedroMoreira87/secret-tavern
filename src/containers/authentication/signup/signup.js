@@ -55,6 +55,7 @@ export default function Signup() {
                     let uid = user.user.uid;
 
                     const docRef = doc(db, "users", uid);
+                    
                     await setDoc(docRef, {
                         firstName: firstName,
                         lastName: lastName,
@@ -62,8 +63,6 @@ export default function Signup() {
                         birthday: birthday,
                         gender: gender
                     });
-
-                    console.log("UID:", uid)
 
                     // Setting avatar
                     // Create a root reference

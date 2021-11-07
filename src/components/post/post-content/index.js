@@ -22,7 +22,10 @@ function ImagePost(props) {
             </div>
             
             <div class="post-content-attach">
-                <span>{props.type}</span>
+                <img 
+                    src={props.attach}
+                    style={props.attach == "" ? {display: "none"} : {display: "block"}}
+                ></img>
             </div>
         </div>
     )
