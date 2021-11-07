@@ -63,6 +63,7 @@ export default function Feed() {
                 first_name= {postData.userData.firstName}
                 last_name= {postData.userData.lastName}
                 text= {postData.text}
+                image_link = {postData.userData.image}
                 type="image"
             />
         )

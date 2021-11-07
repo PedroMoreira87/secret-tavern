@@ -32,7 +32,7 @@ export default function Signup() {
 
     const onImageChange = (event) => {
         if (event.target.files && event.target.files[0]) {
-            setImageURL(URL.createObjectURL(event.target.files[0]));
+            setImageURL(URL.createObjectURL(event.target.files));
             image = event.target.files[0];
         }
     }
@@ -48,6 +48,7 @@ export default function Signup() {
     async function signup() {
         if (checkForEmptyFields()) {
             const uploadedFile = image;
+            console.log(image)
 
             await auth.signup(email, password)
                 .then(async (user) => {
@@ -68,19 +69,22 @@ export default function Signup() {
                     // Create a root reference
                     const storage = getStorage();
                     // Create a reference to 'mountains.jpg'
-                    const storageRef = ref(storage, `users/${uid}`);
-                    await uploadBytes(storageRef, uploadedFile).then((snapshot) => {
-                        console.log('Uploaded a blob or file!');
 
-                        getDownloadURL(snapshot.ref).then((downloadURL) => {
-                            console.log(downloadURL)
-                            image = downloadURL
-                            updateDoc(docRef, {
-                                image: image
-                            })
+                    if(uploadedFile !== undefined) {
+                        const storageRef = ref(storage, `users/${uid}`);
+                        await uploadBytes(storageRef, uploadedFile).then((snapshot) => {
+                            console.log('Uploaded a blob or file!');
+
+                            getDownloadURL(snapshot.ref).then((downloadURL) => {
+                                console.log(downloadURL)
+                                image = downloadURL
+                                updateDoc(docRef, {
+                                    image: image
+                                })
+                            });
                         });
-                    });
-
+                    }
+                        
                     toastfy.onSignup("You Signed Up!");
                     history.push("/login");
                     console.log("Document written with ID: ", docRef.id);

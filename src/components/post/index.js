@@ -12,6 +12,7 @@ export default function Post(props) {
                 <PostHeader
                     first_name={props.first_name}
                     last_name={props.last_name}
+                    image_link={props.image_link}
                 />
                 <PostContent 
                     text={props.text} 

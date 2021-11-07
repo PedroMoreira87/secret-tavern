@@ -12,8 +12,7 @@ export default function PostHeader(props) {
         <div class="post-header">
             <div class="post-header-user">
                 <div class="post-header-user-photo">
-                    
-                    
+                    <img class="post-custom-pic" src={props.image_link} />
                 </div>
                 <span>{props.first_name} {props.last_name}</span>
             </div>
