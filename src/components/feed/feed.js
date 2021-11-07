@@ -116,11 +116,10 @@ export default function Feed() {
 
         <div class="feed-content" onClick={ () => setVisible(false) }>
 
-            <Button variant="outlined" color="primary" onClick={ postAppear } >Create New Post</Button>
-
-            <CreatePost display={isVisible} user={ loggedUserData }/>
-
             <h1>{ posts.length }</h1>
+
+            <Button variant="outlined" color="primary" onClick={ postAppear }> Create New Post </Button>
+            <CreatePost display={isVisible} user={ loggedUserData }/>
 
             { posts.map(renderPosts) }
 
