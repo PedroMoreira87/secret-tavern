@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Button, Card, CardContent, TextField} from "@material-ui/core";
 import {Link, useHistory} from "react-router-dom";
 import {db} from '../../../firebase'
-import {collection, addDoc, doc, setDoc} from "firebase/firestore";
+import {collection, addDoc, doc, setDoc, updateDoc} from "firebase/firestore";
 import './signup.css'
 import toastfy from "../../../utils/toastfy/toastfy";
 import auth from '../../../services/auth.service';
@@ -10,7 +10,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import avatar from '../../../assets/avatar.svg'
-import {getStorage, ref, uploadBytes} from "firebase/storage";
+import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import styled from "@emotion/styled";
 
 const Input = styled('input')({
@@ -71,6 +71,14 @@ export default function Signup() {
                     const storageRef = ref(storage, `users/${uid}`);
                     await uploadBytes(storageRef, uploadedFile).then((snapshot) => {
                         console.log('Uploaded a blob or file!');
+
+                        getDownloadURL(snapshot.ref).then((downloadURL) => {
+                            console.log(downloadURL)
+                            image = downloadURL
+                            updateDoc(docRef, {
+                                image: image
+                            })
+                        });
                     });
 
                     toastfy.onSignup("You Signed Up!");
