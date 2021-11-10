@@ -1,10 +1,10 @@
 import React from "react";
 import './nav-bar.css'
 import {Paper, Tab, Tabs, TabPanel} from "@material-ui/core";
-import {BrowserRouter, Route, Switch, Link} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import Feed from "../feed/feed";
 import Contact from "../contact/contact";
-import About from "../about/about";
+import Profile from "../profile/profile";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 
@@ -22,7 +22,7 @@ export default function NavBar() {
             <BrowserRouter>
                 <Tabs value={value} onChange={handleChange} variant="fullWidth" centered >
                     <Tab label="FEED" {...a11yProps(0)} />                            
-                    <Tab label="ABOUT" {...a11yProps(1)} />                            
+                    <Tab label="PROFILE" {...a11yProps(1)} />
                     <Tab label="CONTACT" {...a11yProps(2)} />
                 </Tabs>
             </BrowserRouter>
@@ -33,7 +33,7 @@ export default function NavBar() {
           </TabPanel>
 
           <TabPanel value={value} index={1} >
-              <About/>
+              <Profile/>
           </TabPanel>
           
           <TabPanel value={value} index={2} >

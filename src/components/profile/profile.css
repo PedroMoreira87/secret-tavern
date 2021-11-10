@@ -1,0 +1,21 @@
+body {
+    background-color: #dafbc0;
+}
+
+.profile-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-background {
+    background-color: #bf5858;
+    border-radius: 0.375rem;
+    width: 60rem;
+    height: 30rem;
+}
+
+.invisible {
+    display: none;
+}

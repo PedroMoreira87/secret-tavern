@@ -13,7 +13,7 @@ const Routes = () => {
                 <Route exact path={"/login"} component={Login}/>
                 <Route exact path={"/signup"} component={SignUp}/>
                 {/*<ProtectedRoute exact path={"/contact"} component={Contact}/>*/}
-                {/*<ProtectedRoute exact path={"/about"} component={About}/>*/}
+                {/*<ProtectedRoute exact path={"/profile"} component={Profile}/>*/}
                 {/*<ProtectedRoute exact path={"/home"} component={Home}/>   */}
                 <Route exact path={"/home"} component={Home}/>
                 <Route exact path={"/*"} component={NotFound}/>
