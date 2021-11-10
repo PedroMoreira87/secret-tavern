@@ -86,8 +86,6 @@ export default function Signup() {
                             
                         });
 
-                    } else {
-
                     }
                         
                     toastfy.onSignup("You Signed Up!");

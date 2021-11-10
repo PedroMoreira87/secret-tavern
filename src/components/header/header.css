@@ -35,3 +35,9 @@ header {
     font-size: 16px;
     margin-right: 30px;
 }
+
+@media  (max-width: 600px) {
+    .logo {
+        font-size: 26px;
+    }
+}
