@@ -12,12 +12,18 @@ export default function Post(props) {
                 <PostHeader
                     first_name={props.first_name}
                     last_name={props.last_name}
+                    profile_pic={props.profile_pic}
                 />
                 <PostContent 
                     text={props.text} 
                     type={props.type}
+                    attach={props.attach}
                 />
-                <PostFooter/>
+                <PostFooter
+                    likes={props.likes}
+                    comments={props.comments}
+                    shares={props.shares}
+                />
             </div>
         </div>
     )

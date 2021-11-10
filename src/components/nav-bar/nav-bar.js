@@ -48,6 +48,7 @@ export default function NavBar() {
       
         return (
           <div
+            class="test"
             role="tabpanel"
             hidden={value !== index}
             id={`vertical-tabpanel-${index}`}

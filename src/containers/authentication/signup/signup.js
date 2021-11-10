@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {Button, Card, CardContent, TextField} from "@material-ui/core";
+import {Button, TextField} from "@material-ui/core";
 import {Link, useHistory} from "react-router-dom";
 import {db} from '../../../firebase'
-import {collection, addDoc} from "firebase/firestore";
+import {doc, setDoc, updateDoc} from "firebase/firestore";
 import './signup.css'
 import toastfy from "../../../utils/toastfy/toastfy";
 import auth from '../../../services/auth.service';
@@ -10,7 +10,7 @@ import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import DatePicker from '@mui/lab/DatePicker';
 import avatar from '../../../assets/avatar.svg'
-import {getStorage, ref, uploadBytes} from "firebase/storage";
+import {getStorage, ref, uploadBytes, getDownloadURL} from "firebase/storage";
 import styled from "@emotion/styled";
 
 const Input = styled('input')({
@@ -31,8 +31,9 @@ export default function Signup() {
     const [imageURL, setImageURL] = useState(avatar);
 
     const onImageChange = (event) => {
+
         if (event.target.files && event.target.files[0]) {
-            setImageURL(URL.createObjectURL(event.target.files[0]));
+            //setImageURL(URL.createObjectURL(event.target.files));
             image = event.target.files[0];
         }
     }
@@ -48,12 +49,15 @@ export default function Signup() {
     async function signup() {
         if (checkForEmptyFields()) {
             const uploadedFile = image;
+            console.log(image)
 
             await auth.signup(email, password)
                 .then(async (user) => {
                     let uid = user.user.uid;
-                    // Add a new document with a generated id.
-                    const docRef = await addDoc(collection(db, "users"), {
+
+                    const docRef = doc(db, "users", uid);
+                    
+                    await setDoc(docRef, {
                         firstName: firstName,
                         lastName: lastName,
                         email: email,
@@ -65,11 +69,25 @@ export default function Signup() {
                     // Create a root reference
                     const storage = getStorage();
                     // Create a reference to 'mountains.jpg'
-                    const storageRef = ref(storage, `users/${uid}`);
-                    await uploadBytes(storageRef, uploadedFile).then((snapshot) => {
-                        console.log('Uploaded a blob or file!');
-                    });
 
+                    if(uploadedFile !== undefined) {
+                        
+                        const storageRef = ref(storage, `users/${uid}/avatar`);
+                        await uploadBytes(storageRef, uploadedFile).then((snapshot) => {
+                            console.log('Uploaded a blob or file!');
+
+                            getDownloadURL(snapshot.ref).then((downloadURL) => {
+                                console.log(downloadURL)
+                                image = downloadURL
+                                updateDoc(docRef, {
+                                    image: image
+                                })
+                            });
+                            
+                        });
+
+                    }
+                        
                     toastfy.onSignup("You Signed Up!");
                     history.push("/login");
                     console.log("Document written with ID: ", docRef.id);

@@ -1,4 +1,34 @@
 .feed-content {
-    width: 100%;
+    background-image: url("../../assets/wood-background.png");
     text-align: center;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid lightgray;
+    flex-wrap: wrap;
+}
+
+.feed-content-create-post {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 20vw;
+    height: 80px;
+    border: solid 1px lightgray;
+    background-color: rgb(240, 240, 240);
+}
+
+.feed-content-posts {
+    padding: 20px 50px 0px 50px;
+    margin-top: 30px;
+    background-color: rgba(255, 255, 255, 0.95);
+    min-height: 100vh;
+    min-width: 20vw;
+}
+
+.new-posts-button {
+    margin-top: 20px;
+}
+
+.css-19kzrtu {
+    padding: 0 !important;
 }
