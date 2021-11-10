@@ -33,7 +33,7 @@ export default function Signup() {
     const onImageChange = (event) => {
 
         if (event.target.files && event.target.files[0]) {
-            setImageURL(URL.createObjectURL(event.target.files));
+            //setImageURL(URL.createObjectURL(event.target.files));
             image = event.target.files[0];
         }
     }

@@ -21,8 +21,7 @@ export default function Feed() {
     }, [])
 
     const doPosts = async() => {
-        await fetchPosts();
-        mountPosts();
+        await fetchPosts().then(mountPosts());
     }
 
     const fetchPosts = async() => {
