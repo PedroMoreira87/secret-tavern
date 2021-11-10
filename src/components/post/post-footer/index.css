@@ -1,18 +1,16 @@
 .post-footer {
     width: 100%;
     height: 50px;
-    border: 1px dotted black;
     border-radius: 0 0 5px 5px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    background-color: rgb(240, 240, 240);
 }
 
 .post-footer-info {
     width: 100%;
     height: 50%;
-    border: 1px dotted black;
-
 }
 
 .post-footer-interact {
@@ -25,11 +23,12 @@
 .post-footer-interact button {
     height: 50%;
     width: 100%;
+    border-top: 1px solid lightgray;
     background-color: rgba(0,0,0,0);
     border: none;
 }
 
 .post-footer-interact button:hover {
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.100);
+    background-color: rgb(221, 221, 221);
 }

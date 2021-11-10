@@ -7,6 +7,7 @@
 
 
 .MuiBox-root css-19kzrtu {
-    padding: 0;
+    padding: 0 !important;
     position: relative;
+
 }

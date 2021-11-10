@@ -1,4 +1,15 @@
 .feed-content {
-    width: 100%;
+    background-image: url("../../assets/wood-background.png");
     text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.feed-content-posts {
+    padding: 0 50px 0 50px;
+    background-color: white;
+}
+
+.css-19kzrtu {
+    padding: 0 !important;
 }

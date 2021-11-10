@@ -2,12 +2,13 @@ import React, {useState, useEffect} from "react";
 import {db} from '../../firebase'
 import Post from "../../components/post";
 import "./feed.css";
-import { collection, getDoc, getDocs, doc } from "firebase/firestore"
+import { collection, collectionGroup, query, where, getDoc, getDocs, doc, orderBy } from "firebase/firestore"
 import CreatePost from "../create-post/create-post"
 import {Button} from "@material-ui/core";
 import { getAuth } from "firebase/auth";
 
 var postsGambi = []
+var postsOrder = []
 
 export default function Feed() {
     const [loggedUserData, setLoggedUserData] = useState({})
@@ -21,24 +22,46 @@ export default function Feed() {
 
     const doPosts = async() => {
         await fetchPosts();
-        //setTimeout(()=>{console.log(posts.length)}, 5000)
         mountPosts();
     }
 
     const fetchPosts = async() => {
+
+        postsOrder = []
+
+        const postsQuery = query(collectionGroup(db, 'posts'), orderBy("date"));
+
+        const querySnapshot = await getDocs(postsQuery);
+        querySnapshot.forEach((doc) => {
+            postsOrder.push(doc.id)
+        });
+
         const usersSnapshot = await getDocs(collection(db, "users"));
         postsGambi = []
         usersSnapshot.forEach(async (userDoc) => {
             
             const postsSnapshot = await getDocs(collection(db, "users", userDoc.id, "posts"));
             postsSnapshot.forEach(async (postDoc) => {
-                // console.log("USER: ", userDoc.data());  
-                // console.log(" POST: ", postDoc.data());
-                postsGambi.unshift({ ... postDoc.data(), userData: userDoc.data() });
-                //setPosts(list)
+                postsGambi.unshift({ ... postDoc.data(), id: postDoc.id, userData: userDoc.data() });
             })
 
         });
+    }
+
+    const getOrderedPostsList = () => {
+        var orderedList = []
+        console.log("postsOrder:",postsOrder)
+        console.log("postsGambi:",postsGambi)
+        for(let i = postsOrder.length-1; i >= 0 ; i--) {
+            for(let j = 0; j < postsGambi.length; j++) {
+                console.log("id:",i, postsGambi[j].id)
+                if(postsOrder[i] == postsGambi[j].id) {
+                    orderedList.push(postsGambi[j]) 
+                }
+            }
+        }
+        console.log("orderedList:",orderedList)
+        return orderedList
     }
 
     const mountPosts = () => {
@@ -48,11 +71,12 @@ export default function Feed() {
             console.log("Loading Posts...")
 
             if(postLength != 0) {
-                setPosts(postsGambi)
-                console.log(posts)
+                let orderedPostsGambi = getOrderedPostsList(postsGambi)
+                setPosts(orderedPostsGambi)
+                console.log("FINAL:",posts)
                 clearInterval(handle)
             }
-        }, 1000)
+        }, 2000)
     }
 
     const renderPosts = (postData, id) => {
@@ -117,12 +141,11 @@ export default function Feed() {
 
         <div class="feed-content" onClick={ () => setVisible(false) }>
 
-            <h1>{ posts.length }</h1>
-
-            <Button variant="outlined" color="primary" onClick={ postAppear }> Create New Post </Button>
-            <CreatePost display={isVisible} user={ loggedUserData }/>
-
-            { posts.map(renderPosts) }
+            <div class="feed-content-posts">
+                <Button variant="outlined" color="primary" onClick={ postAppear }> Create New Post </Button>
+                <CreatePost display={isVisible} user={ loggedUserData }/>
+                { posts.map(renderPosts) }
+            </div>
 
 
         </div>

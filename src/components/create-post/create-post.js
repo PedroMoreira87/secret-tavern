@@ -48,7 +48,8 @@ function CreatePost(props) {
             const docRef = await addDoc(collection(db, "users", uid, "posts"), {
                 text: postText,
                 likes: 0,
-                shares: 0
+                shares: 0,
+                date: new Date(),
             });
             
             console.log("Document written with ID: ", docRef.id);

@@ -1,11 +1,11 @@
 .post-content {
     width: 100%;
-    border: 1px dotted black;
 }
 
 .post-content-text {
     width: 100%;
-    border: 1px dotted black;
+    text-align: left;
+    background-color: white;
 }
 
 .post-content-text span {

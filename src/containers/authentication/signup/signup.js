@@ -1,8 +1,8 @@
 import React, {useState} from "react";
-import {Button, Card, CardContent, TextField} from "@material-ui/core";
+import {Button, TextField} from "@material-ui/core";
 import {Link, useHistory} from "react-router-dom";
 import {db} from '../../../firebase'
-import {collection, addDoc, doc, setDoc, updateDoc} from "firebase/firestore";
+import {doc, setDoc, updateDoc} from "firebase/firestore";
 import './signup.css'
 import toastfy from "../../../utils/toastfy/toastfy";
 import auth from '../../../services/auth.service';
@@ -31,6 +31,7 @@ export default function Signup() {
     const [imageURL, setImageURL] = useState(avatar);
 
     const onImageChange = (event) => {
+
         if (event.target.files && event.target.files[0]) {
             setImageURL(URL.createObjectURL(event.target.files));
             image = event.target.files[0];
@@ -70,6 +71,7 @@ export default function Signup() {
                     // Create a reference to 'mountains.jpg'
 
                     if(uploadedFile !== undefined) {
+                        
                         const storageRef = ref(storage, `users/${uid}`);
                         await uploadBytes(storageRef, uploadedFile).then((snapshot) => {
                             console.log('Uploaded a blob or file!');
@@ -81,7 +83,11 @@ export default function Signup() {
                                     image: image
                                 })
                             });
+                            
                         });
+
+                    } else {
+
                     }
                         
                     toastfy.onSignup("You Signed Up!");
