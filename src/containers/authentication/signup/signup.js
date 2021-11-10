@@ -72,7 +72,7 @@ export default function Signup() {
 
                     if(uploadedFile !== undefined) {
                         
-                        const storageRef = ref(storage, `users/${uid}`);
+                        const storageRef = ref(storage, `users/${uid}/avatar`);
                         await uploadBytes(storageRef, uploadedFile).then((snapshot) => {
                             console.log('Uploaded a blob or file!');
 

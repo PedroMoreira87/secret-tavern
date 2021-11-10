@@ -49,17 +49,13 @@ export default function Feed() {
 
     const getOrderedPostsList = () => {
         var orderedList = []
-        console.log("postsOrder:",postsOrder)
-        console.log("postsGambi:",postsGambi)
         for(let i = postsOrder.length-1; i >= 0 ; i--) {
             for(let j = 0; j < postsGambi.length; j++) {
-                console.log("id:",i, postsGambi[j].id)
                 if(postsOrder[i] == postsGambi[j].id) {
                     orderedList.push(postsGambi[j]) 
                 }
             }
         }
-        console.log("orderedList:",orderedList)
         return orderedList
     }
 
@@ -72,21 +68,23 @@ export default function Feed() {
             if(postLength != 0) {
                 let orderedPostsGambi = getOrderedPostsList(postsGambi)
                 setPosts(orderedPostsGambi)
-                console.log("FINAL:",posts)
                 clearInterval(handle)
             }
-        }, 2000)
+        }, 1000)
     }
 
     const renderPosts = (postData, id) => {
         return (
             <Post
-                key={id}
+                key = {id}
                 profile_pic = {postData.userData.image}
-                first_name= {postData.userData.firstName}
-                last_name= {postData.userData.lastName}
-                text= {postData.text}
+                first_name = {postData.userData.firstName}
+                last_name = {postData.userData.lastName}
+                text = {postData.text}
                 attach = {postData.attach}
+                likes = {postData.likes}
+                comments = {0}
+                shares = {postData.shares}
                 type="image"
             />
         )
@@ -141,9 +139,15 @@ export default function Feed() {
         <div class="feed-content" onClick={ () => setVisible(false) }>
 
             <div class="feed-content-posts">
-                <Button variant="outlined" color="primary" onClick={ postAppear }> Create New Post </Button>
-                <CreatePost display={isVisible} user={ loggedUserData }/>
-                { posts.map(renderPosts) }
+
+                <div class="feed-content-create-post">
+                    <Button className={"new-posts-button"} variant="outlined" color="primary" onClick={ postAppear }> Create New Post </Button>
+                    <CreatePost display={isVisible} user={ loggedUserData }/>
+                </div>
+            
+                <div class="feed-content-render-post">
+                    { posts.map(renderPosts) }
+                </div>
             </div>
 
 

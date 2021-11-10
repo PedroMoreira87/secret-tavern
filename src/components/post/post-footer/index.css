@@ -9,8 +9,17 @@
 }
 
 .post-footer-info {
-    width: 100%;
+    width: 87%;
     height: 50%;
+}
+
+.likes {
+    float: left;
+}
+
+.comments, .shares {
+    float: right;
+    margin: 6px;
 }
 
 .post-footer-interact {
@@ -26,6 +35,7 @@
     border-top: 1px solid lightgray;
     background-color: rgba(0,0,0,0);
     border: none;
+    border-top: 1px solid lightgray;
 }
 
 .post-footer-interact button:hover {

@@ -18,13 +18,12 @@ function ImagePost(props) {
     return (
         <div class="post-content">
             <div class="post-content-text">
-                <span>{props.text}</span>
+                {props.attach == undefined ? <h2>{props.text}</h2> : <span>{props.text}</span> }
             </div>
             
             <div class="post-content-attach">
                 <img 
                     src={props.attach}
-                    style={props.attach == "" ? {display: "none"} : {display: "block"}}
                 ></img>
             </div>
         </div>

@@ -79,7 +79,7 @@ function CreatePost(props) {
         <div class="create-post" style={props.display ? {display: "block"} : {display: "none"}} onClick={(e) => {e.stopPropagation()}}>
             <div class="create-post-content">
 
-                <h2>CREATE NEW POST</h2>
+                <h2 class="create-post-title">CREATE NEW POST</h2>
 
                 <TextField
                     variant="outlined"
@@ -101,9 +101,8 @@ function CreatePost(props) {
                         variant="outlined" 
                         color="primary" 
                         onClick={ () => {submitPost(props.user)} }
-                    > 
-                        Submit 
-                    </Button>
+                    > Submit </Button>
+
                 </div>
 
             </div>

@@ -19,7 +19,11 @@ export default function Post(props) {
                     type={props.type}
                     attach={props.attach}
                 />
-                <PostFooter/>
+                <PostFooter
+                    likes={props.likes}
+                    comments={props.comments}
+                    shares={props.shares}
+                />
             </div>
         </div>
     )

@@ -1,5 +1,7 @@
 
-
+.test {
+    box-shadow: 5px 10px 8px #c7c7c7;
+}
 
 .nav-bar-style {
     background-color: gray;
