@@ -1,8 +1,8 @@
 import React from "react";
-import PostHeader from "../post/post-header";
-import PostContent from "../post/post-content";
-import PostFooter from "../post/post-footer";
-import './index.css';
+import PostHeader from "./post-header/post-header";
+import PostContent from "./post-content/post-content";
+import PostFooter from "./post-footer/post-footer";
+import './post.css';
 
 
 export default function Post(props) {
@@ -14,8 +14,8 @@ export default function Post(props) {
                     last_name={props.last_name}
                     profile_pic={props.profile_pic}
                 />
-                <PostContent 
-                    text={props.text} 
+                <PostContent
+                    text={props.text}
                     type={props.type}
                     attach={props.attach}
                 />
