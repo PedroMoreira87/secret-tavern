@@ -12,7 +12,8 @@ const Routes = () => {
                 <Route exact path={"/"} component={Login}/>
                 <Route exact path={"/login"} component={Login}/>
                 <Route exact path={"/signup"} component={SignUp}/>
-                <ProtectedRoute exact path={"/home"} component={Home}/>
+                {/* <ProtectedRoute exact path={"/home"} component={Home}/> */}
+                <Route exact path={"/home"} component={Home}/>
                 <Route path={"/*"} component={NotFound}/>
             </Switch>
         </BrowserRouter>

@@ -3,7 +3,7 @@ import './nav-bar.css'
 import {Paper, Tab, Tabs, TabPanel} from "@material-ui/core";
 import {BrowserRouter} from "react-router-dom";
 import Feed from "../feed/feed";
-import Contact from "../contact/contact";
+import Info from "../info/info";
 import Profile from "../profile/profile";
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
@@ -37,7 +37,7 @@ export default function NavBar() {
           </TabPanel>
           
           <TabPanel value={value} index={2} >
-              <Contact/>
+              <Info/>
           </TabPanel>
           
         </div>
