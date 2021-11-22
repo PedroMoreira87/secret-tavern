@@ -58,7 +58,7 @@ export default function Header() {
             <span className="logo">Secret Tavern</span>
 
             <div class="header-user-info">
-                <img src={loggedUserData.image} class="header-user-pic"></img>
+                <img src={loggedUserData.image} class="header-user-pic" alt={''}/>
                 <h3 class="header-user-name">{loggedUserData.firstName} {loggedUserData.lastName}</h3>
                 <Button className={"btn-logout"} variant="outlined" color="primary" onClick={logout}>
                     Log Out

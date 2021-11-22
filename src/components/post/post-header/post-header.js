@@ -1,5 +1,5 @@
 import React from "react";
-import './index.css'
+import './post-header.css'
 import { storage } from "../../../firebase"
 import { getStorage, ref, uploadBytes } from "firebase/storage"
 

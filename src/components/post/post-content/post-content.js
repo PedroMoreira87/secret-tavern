@@ -1,5 +1,5 @@
 import React from "react";
-import './index.css'
+import './post-content.css'
 
 export default function PostContent(props) {
 

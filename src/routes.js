@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Redirect, Route, Switch} from "react-router-dom";
 import Home from "./containers/home/home";
 import NotFound from "./components/not-found/not-found";
 import Login from "./containers/authentication/login/login";
@@ -12,11 +12,9 @@ const Routes = () => {
                 <Route exact path={"/"} component={Login}/>
                 <Route exact path={"/login"} component={Login}/>
                 <Route exact path={"/signup"} component={SignUp}/>
-                {/*<ProtectedRoute exact path={"/contact"} component={Contact}/>*/}
-                {/*<ProtectedRoute exact path={"/about"} component={About}/>*/}
-                {/*<ProtectedRoute exact path={"/home"} component={Home}/>   */}
+                {/* <ProtectedRoute exact path={"/home"} component={Home}/> */}
                 <Route exact path={"/home"} component={Home}/>
-                <Route exact path={"/*"} component={NotFound}/>
+                <Route path={"/*"} component={NotFound}/>
             </Switch>
         </BrowserRouter>
     )

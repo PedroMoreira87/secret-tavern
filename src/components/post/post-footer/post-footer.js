@@ -1,5 +1,5 @@
 import React from "react";
-import './index.css'
+import './post-footer.css'
 
 export default function PostFooter(props) {
     return (
